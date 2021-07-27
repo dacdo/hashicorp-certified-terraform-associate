@@ -2,3 +2,13 @@
 sudo yum update -y
 sudo yum install -y ${package_name}
 sudo yum list installed | grep ${package_name} >> /tmp/package-installed-list.txt
+
+# list
+%{ for addr in ip_addrs ~}
+echo backend ${addr}:${port} >> /tmp/dac-test.txt
+%{ endfor ~}
+
+# map
+%{ for config_key, config_value in config }
+echo set ${config_key} = ${config_value} >> /tmp/dac-test.txt
+%{ endfor ~}
