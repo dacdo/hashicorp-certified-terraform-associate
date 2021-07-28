@@ -5,12 +5,13 @@ resource "aws_s3_bucket" "mys3bucket" {
 
   # for_each Meta-Argument
   for_each = {
-    dev  = "my-dapp-bucket"
-    qa   = "my-qapp-bucket"
-    stag = "my-sapp-bucket"
-    prod = "my-papp-bucket"
+    dev  = "dacdo-dapp-bucket"
+    qa   = "dacdo-qapp-bucket"
+    stag = "dacdo-sapp-bucket"
+    prod = "dacdo-papp-bucket"
   }
 
+  # bucket name
   bucket = "${each.key}-${each.value}"
   acl    = "private"
 
