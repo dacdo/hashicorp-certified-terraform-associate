@@ -10,6 +10,10 @@ output "name" {
   value       = aws_s3_bucket.s3_bucket.id
 }
 
+output "region" {
+  description = "Region where the bucket resides"
+  value       = aws_s3_bucket.s3_bucket.region
+}
 output "domain" {
   description = "Domain Name of the bucket"
   value       = aws_s3_bucket.s3_bucket.website_domain
