@@ -1,8 +1,9 @@
 # Resource-8: Create EC2 Instance
 resource "aws_instance" "my-ec2-vm" {
-  ami                    = "ami-083ac7c7ecf9bb9b0" # Amazon Linux
+  # ami                    = "ami-083ac7c7ecf9bb9b0" # Amazon Linux
+  ami                    = data.aws_ami.amzlinux.id
   instance_type          = "t2.micro"
-  key_name               = "terraform-key"
+  key_name               = "oregon-kp"
   subnet_id              = aws_subnet.vpc-dev-public-subnet-1.id
   vpc_security_group_ids = [aws_security_group.dev-vpc-sg.id]
   #user_data = file("apache-install.sh")
@@ -12,7 +13,7 @@ resource "aws_instance" "my-ec2-vm" {
     sudo yum install httpd -y
     sudo systemctl enable httpd
     sudo systemctl start httpd
-    echo "<h1>Welcome to StackSimplify ! AWS Infra created using Terraform in us-east-1 Region</h1>" > /var/www/html/index.html
+    echo "<h1>Welcome to StackSimplify ! AWS Infra created using Terraform in us-west-2 Region</h1>" > /var/www/html/index.html
     EOF
   tags = {
     "Name" = "myec2vm"
