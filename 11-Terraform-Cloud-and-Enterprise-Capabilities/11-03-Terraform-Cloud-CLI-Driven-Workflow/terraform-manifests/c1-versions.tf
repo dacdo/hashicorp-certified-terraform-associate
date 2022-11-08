@@ -1,6 +1,6 @@
 # Terraform Block
 terraform {
-  required_version = "~> 0.14" # which means any version equal & above 0.14 like 0.15, 0.16 etc and < 1.xx
+  required_version = "~> 1.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -9,17 +9,17 @@ terraform {
   }
   # Update Terraform Cloud Backend Block Information below
   backend "remote" {
-    organization = "hcta-demo1"
+    organization = "hcta-dacdo"
 
     workspaces {
-      name = "cli-driven-demo"
+      name = "terraform-cloud-demo2"
     }
   }
 }
 
 # Provider Block
 provider "aws" {
-  region  = var.aws_region
+  region = var.aws_region
 }
 /*
 Note-1:  AWS Credentials Profile (profile = "default") configured on your local desktop terminal  
